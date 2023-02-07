@@ -6,6 +6,8 @@ Runs on **Express.js** with Node.js
 
 Compatible with [MySql Server](https://dev.mysql.com/downloads/mysql/) and [Firebase Firestore](https://firebase.google.com/docs/firestore/)
 
+Can be run with other app, including **PHP** as long as they are in different ports
+
 ## Contents
 
 - [Requirements](#requirements)
@@ -64,6 +66,12 @@ To start the test
 ```javascript
 npm startmysql //If you are using mysql
 npm startfirebase //If you are using firebase
+```
+
+To run the app, use **pm2** library that you have installed globally
+```javascript
+pm2 start appDefault.js --name espAuth //If you are using mysql
+pm2 start appFirebase.js --name espAuth //If you are using Firebase Firestore
 ```
 
 ### Process Environment
