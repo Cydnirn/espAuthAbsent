@@ -23,7 +23,7 @@ Requires NPM, to get NPM please install Node.js
 
 Requires the pm2 package enabled globally
 
-```javascript
+```bash
 npm i pm2 -g
 ```
 
@@ -57,19 +57,19 @@ For more information about what each lines means go to [Process Environment](#pr
 
 To install all package
 
-```javascript
+```bash
 npm i
 ```
 
 To start the test
 
-```javascript
+```bash
 npm startmysql //If you are using mysql
 npm startfirebase //If you are using firebase
 ```
 
 To run the app, use **pm2** library that you have installed globally
-```javascript
+```bash
 pm2 start appDefault.js --name espAuth //If you are using mysql
 pm2 start appFirebase.js --name espAuth //If you are using Firebase Firestore
 ```
