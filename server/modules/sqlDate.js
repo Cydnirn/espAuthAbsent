@@ -31,7 +31,10 @@ module.exports = {
     },
     getDateOnly: () => {
         let now = new Date();
-        let today = now.toISOString().slice(0, 10);
+        let year = now.getFullYear();
+        let month = now.getMonth() + 1;
+        let day = now.getDate();
+        let today = `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`;
         return today;
     }
 }

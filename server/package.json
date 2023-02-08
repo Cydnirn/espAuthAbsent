@@ -1,12 +1,12 @@
 {
   "name": "espauthabsent",
-  "version": "1.0.0",
+  "version": "2.1.1",
   "description": "Standalone ESPxx Auth Server running on Node.js with Express, with database support, either MySQL or NoSQL with Firebase",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "startmysql":"node appDefault.js",
-    "startfirebase":"node appFirebase.js"
+    "startmysql": "node appDefault.js",
+    "startfirebase": "node appFirebase.js"
   },
   "author": "Cydnirn, Harryawan, BossBaby11",
   "license": "ISC",
@@ -19,6 +19,7 @@
     "firebase-admin": "^11.5.0",
     "helmet": "^6.0.1",
     "http": "^0.0.1-security",
+    "mqtt": "^4.3.7",
     "mysql": "^2.18.1",
     "pm2": "^5.2.2",
     "util": "^0.12.5"

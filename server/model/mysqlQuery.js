@@ -6,6 +6,8 @@ async function verifyEmptyDate(userid, absentDate, tables){
         const getDate = `SELECT userId, date, status FROM ${tables} WHERE userId = ? and date LIKE ?;`;
         const value = [userid, absentDate + "%"];
         const absentVal = await pool.query(getDate, value);
+        console.log(value);
+        console.log(absentVal);
         if(!absentVal.length){
             return true;
         }
@@ -38,14 +40,17 @@ async function insertAbsent(userid, username, usernum, userclass, usertype, abse
         const insertDate = `INSERT INTO ${tables}(userId, name, absentNum, class, type, date, status) VALUES (?, ?, ?, ?, ?, ?, ?);`;
         const value = [userid, username, usernum, userclass, usertype, absentDate, status];
         let verifyVal = await verifyEmptyDate(userid, dateVerify, tables);
-        let kaichouStats;
+        console.log(verifyVal);
+        let kaichouStats = true;
         if(usertype == "member"){
             kaichouStats = await verifyKaichou(dateVerify, userclass, tables);
         }
         if (!verifyVal){
+            console.log("You have accessed!")
             return false;
         }
         else if(!kaichouStats){
+            console.log("You are unauthorized!")
             return false;
         }
         else{

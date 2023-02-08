@@ -1,15 +1,22 @@
 [
     {
       "hexID": "05ED7C41",
-      "name": "Test",
+      "name": "Seno",
       "number": "1A",
+      "division": "A",
+      "type": "kaichou"
+    },
+    {
+      "hexID": "0585EE32E3E100",
+      "name": "Test1",
+      "number": "2A",
       "division": "A",
       "type": "member"
     },
     {
-      "hexID": "08871ADH9012",
-      "name": "Test1",
-      "number": "2A",
+      "hexID": "04472F7AFD6E80",
+      "name": "Test2",
+      "number": "3A",
       "division": "A",
       "type": "kaichou"
     }
