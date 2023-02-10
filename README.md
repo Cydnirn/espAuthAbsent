@@ -10,6 +10,8 @@ Compatible with [MySql Server](https://dev.mysql.com/downloads/mysql/) and [Fire
 
 Can be run with other app, including **PHP** as long as they are in different ports
 
+With version 2.1.1, now runs with MQTT Server running on [Aedes])(https://github.com/moscajs/aedes) which provide faster data transfer than http (Should have realized sooner)
+
 ## Contents
 
 - [Requirements](#requirements)
@@ -47,6 +49,7 @@ The application server used several packages:
 9. [_mysql_](https://www.npmjs.com/package/mysql)
 10. [_pm2_](https://www.npmjs.com/package/pm2)
 11. [_util_](https://www.npmjs.com/package/util)
+12. [_aedes_](https://www.npmjs.com/package/aedes)
 
 ## Initial Setup
 
@@ -61,6 +64,7 @@ For more information about what each lines means go to [Process Environment](#pr
 4. Start the test first
 5. If you used MYSQL, you can import the test table for attendance located inside the **/server/mysql** folder
 6. Add all your identities with their corresponding HexID inside the **identity.json** inside the **/server/auth** folder
+7. Optionally you can run the Aedes MQTT server inside the **mq** folder and type **npm run start**
 
 To install all package
 
@@ -151,6 +155,8 @@ Menggunakan **Express.js** dengan Node.js
 
 Kompatibel dengan [MySql Server](https://dev.mysql.com/downloads/mysql/) dan [Firebase Firestore](https://firebase.google.com/docs/firestore/)
 
+Dengan versi 2.1.1, sekarang berjalan dengan server MQTT menggunakan package [Aedes])(https://github.com/moscajs/aedes) yang memberikan kecepatan pertukaran data yang lebih cepat daripada HTTP (Seharusnya sudah sadar dari dulu)
+
 ## Konten
 
 - [Hal yang Dibutuhkan](#hal-yang-dibutuhkan)
@@ -187,6 +193,7 @@ Aplikasi server membutuhkan beberapa package:
 9. [_mysql_](https://www.npmjs.com/package/mysql)
 10. [_pm2_](https://www.npmjs.com/package/pm2)
 11. [_util_](https://www.npmjs.com/package/util)
+12. [_aedes_](https://www.npmjs.com/package/aedes)
 
 ## Setup Awal
 
@@ -201,6 +208,7 @@ Untuk mengetahui apa arti dari setiap baris di dalam file **.env**, pergi ke [Li
 4. Uji coba terlebih dahulu
 5. Jika Anda menggunakan MYSQL, Anda bisa mengimpor tabel dari sebuah file yang terletak di dalam folder **/server/mysql**
 6. Tambahkan semua identitas bersamaan dengan hexID mereka di dalam file **identity.json** di dalam direktori **/server/auth**
+7. Secara opsional, Anda juga bisa menjalankan server MQTT yang berjalan dengan package Aedes dengan mengkases folder **mq** dan mengetik **npm run start**
 
 Untuk menginstall semua package
 
