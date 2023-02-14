@@ -1,22 +1,29 @@
-const { getSQLDate, getDateOnly } = require("../modules/sqlDate");
+const { getSQLDate, getDateOnly, eligibleTime } = require("../modules/sqlDate");
 const SQLQuery = require("../model/mysqlQuery");
 const fs = require('fs');
 const path = require('path');
 
 async function espInsertMysql(userid, username, usernum, userclass, usertype, absentDate, dateVerify) {
-    let value = await SQLQuery.insertAbsent(userid, username, usernum, userclass, usertype, absentDate, 'Hadir', dateVerify, process.env.MYSQL_ABSENT_TABLE);
-    if (!value) {
-        console.log("Not Allowed");
-        return "405";
+    let eligible = eligibleTime();
+    if (!eligible) {
+        console.log("Excedded time limit");
+        return "405"
     }
     else {
-        console.log("Success");
-        return "200";
+        let value = await SQLQuery.insertAbsent(userid, username, usernum, userclass, usertype, absentDate, 'Hadir', dateVerify, process.env.MYSQL_ABSENT_TABLE);
+        if (!value) {
+            console.log("Not Allowed");
+            return "405";
+        }
+        else {
+            console.log("Success");
+            return "200";
+        }
     }
 }
 
 async function espInsertFirebase(res, userid, username, usernum, userclass, usertype, absentDate, dateVerify) {
-    
+
 }
 
 async function AuthDataMysql(data, iteration, hexid) {
@@ -70,29 +77,20 @@ async function AuthDataFirebase(res, data, iteration, hexid) {
     }
 }
 
-async function ReadIdentityMySql(hexID){
-    return new Promise((resolve, reject) => {
-        fs.readFile(path.join(__dirname, "../auth/identity.json"), 'utf-8', async (err, data) => {
+async function ReadIdentityMySql(hexID) {
+    return new Promise(async (resolve, reject) => {
+        fs.readFile(path.join(__dirname, "../auth/identity.json"), "utf-8", async (err, data) => {
             try {
-                if(err){
-                    console.log(err);
-                    reject("500");
-                }
-                else{
-                    let identityJson = JSON.parse(data);
-                    let i = 0;
-                    let res = await AuthDataMysql(identityJson, i, hexID);
-                    console.log("from ReadIdentity", res);
-                    resolve(res);
-                }
-            } catch (err) {
-                console.log(err);
-                reject(500);
+                let identityJson = JSON.parse(data);
+                let i = 0;
+                let res = await AuthDataMysql(identityJson, i, hexID);
+                resolve(res);   
+            } catch (error) {
+                reject(error)
             }
         });
     });
 }
-
 
 module.exports = {
     ReadIdentityMySql,

@@ -26,6 +26,7 @@ client.on("message", async (topic, message) =>{
 
         console.log("Received data from ESP with ID ", espId, " and data ", hexID);
         let statusCode = await ReadIdentityMySql(hexID);
+        console.log(`StatusCode: ${statusCode}`);
         client.publish(`esp/${espId}/response`, JSON.stringify({statusCode}));
     }
 });

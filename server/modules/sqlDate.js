@@ -1,5 +1,6 @@
 /*
 Function to get SQL Format date
+and also to check if a time is eligible or not
 */
 
 module.exports = {
@@ -36,5 +37,17 @@ module.exports = {
         let day = now.getDate();
         let today = `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`;
         return today;
+    },
+    eligibleTime: () => {
+        let currentTime = new Date().getHours();
+        const startTime = parseInt(process.env.START_TIME);
+        const endTime = parseInt(process.env.END_TIME);
+
+        if (currentTime >= startTime && currentTime < endTime){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

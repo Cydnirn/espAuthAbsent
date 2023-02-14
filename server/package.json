@@ -5,13 +5,17 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "devmysql":"concurrently --kill-others \"npm startmysql\" \" npm startmqtt\"",
+    "devfirebase":"concurrently --kill-others \"npm startfirebase\" \" npm startmqtt\"",
     "startmysql": "node appDefault.js",
+    "startmqtt":"node ../mq/index.js",
     "startfirebase": "node appFirebase.js"
   },
   "author": "Cydnirn, Harryawan, BossBaby11",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.1",
+    "concurrently": "^7.6.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
