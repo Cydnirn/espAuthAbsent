@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "devmysql":"concurrently --kill-others \"npm startmysql\" \" npm startmqtt\"",
-    "devfirebase":"concurrently --kill-others \"npm startfirebase\" \" npm startmqtt\"",
+    "devmysql":"concurrently --kill-others \"npm run startmysql\" \" npm run startmqtt\"",
+    "devfirebase":"concurrently --kill-others \"npm run startfirebase\" \" npm run startmqtt\"",
     "startmysql": "node appDefault.js",
     "startmqtt":"node ../mq/index.js",
     "startfirebase": "node appFirebase.js"
