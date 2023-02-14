@@ -10,6 +10,8 @@ Compatible with [MySql Server](https://dev.mysql.com/downloads/mysql/) and [Fire
 
 Can be run with other app, including **PHP** as long as they are in different ports
 
+With version 2.1.1, now runs with MQTT Server running on [Aedes])(https://github.com/moscajs/aedes) which provide faster data transfer than http (Should have realized sooner)
+
 ## Contents
 
 - [Requirements](#requirements)
@@ -47,6 +49,7 @@ The application server used several packages:
 9. [_mysql_](https://www.npmjs.com/package/mysql)
 10. [_pm2_](https://www.npmjs.com/package/pm2)
 11. [_util_](https://www.npmjs.com/package/util)
+12. [_aedes_](https://www.npmjs.com/package/aedes)
 
 ## Initial Setup
 
@@ -61,6 +64,7 @@ For more information about what each lines means go to [Process Environment](#pr
 4. Start the test first
 5. If you used MYSQL, you can import the test table for attendance located inside the **/server/mysql** folder
 6. Add all your identities with their corresponding HexID inside the **identity.json** inside the **/server/auth** folder
+7. Optionally you can run the Aedes MQTT server inside the **mq** folder and type **npm run start**
 
 To install all package
 
@@ -112,19 +116,20 @@ The **.env** file in **server** folders contain severals variables which will be
 For ease of use, just edit the **.env** file, you may edit the **mysqlQuery.js** and **firebaseQuery.js** to suits your query needs
 
 1. **_SERVER_PORT_** = Defines the port where the application runs, on default is **5128**
-2. **_MYSQL_HOST_** = Defines the host server of the MYSQL Database
-3. **_MYSQL_USER_** = Defines the user who will be connected to the mysql host server
-4. **_MYSQL_PASSWORD_** = Defines the password that will be used to connect to the mysql host server
-5. **_MYSQL_DATABASE_** = Defines the Database that will be used from the Mysql Server
-6. **_MYSQL_ABSENT_TABLE_** = Defines the table that will be used for attendance query (primarily for inserting new attendance)
-7. **_FIREBASE_API_** = Defines the API key that will be used to connect to your Firebase Project
-8. **_FIREBASE_AUTH_DOMAIN_** = Defines the authorized domains to connect to your firebase project
-9. **_FIREBASE_PROJECT_ID_** = Defines the Id of your project that will be used by the app
-10. **_FIREBASE_STORAGE_BUCKET_** = Defines the your firebase storage bucket
-11. **_FIREBASE_MESSAGE_ID_** = Defines the Message Id of your Firebase project
-12. **_FIREBASE_APP_ID_** = Defines the your app ID that will be used to connect to Firebase
-13. **_FIREBASE_MEASUREMENT_ID_** = Defines the measurement ID of your firebase project
-14. **_FIREBASE_KEYS_** = Defines your admin secret keys to use in Firebase
+2. **_ESP_ORIGIN_** = Defines the IP Address of the ESP8266 or the ESP 32 or the client
+3. **_MYSQL_HOST_** = Defines the host server of the MYSQL Database
+4. **_MYSQL_USER_** = Defines the user who will be connected to the mysql host server
+5. **_MYSQL_PASSWORD_** = Defines the password that will be used to connect to the mysql host server
+6. **_MYSQL_DATABASE_** = Defines the Database that will be used from the Mysql Server
+7. **_MYSQL_ABSENT_TABLE_** = Defines the table that will be used for attendance query (primarily for inserting new attendance)
+8. **_FIREBASE_API_** = Defines the API key that will be used to connect to your Firebase Project
+9. **_FIREBASE_AUTH_DOMAIN_** = Defines the authorized domains to connect to your firebase project
+10. **_FIREBASE_PROJECT_ID_** = Defines the Id of your project that will be used by the app
+11. **_FIREBASE_STORAGE_BUCKET_** = Defines the your firebase storage bucket
+12. **_FIREBASE_MESSAGE_ID_** = Defines the Message Id of your Firebase project
+13. **_FIREBASE_APP_ID_** = Defines the your app ID that will be used to connect to Firebase
+14. **_FIREBASE_MEASUREMENT_ID_** = Defines the measurement ID of your firebase project
+15. **_FIREBASE_KEYS_** = Defines your admin secret keys to use in Firebase
 
 To know how to get the Firebase credentials, please refer to their [Documentation](https://firebase.google.com/docs/build)
 
@@ -150,6 +155,8 @@ Sebuah sistem absensi sekolah yang kompatibel dengan mikrokontroller ESP8266 ata
 Menggunakan **Express.js** dengan Node.js
 
 Kompatibel dengan [MySql Server](https://dev.mysql.com/downloads/mysql/) dan [Firebase Firestore](https://firebase.google.com/docs/firestore/)
+
+Dengan versi 2.1.1, sekarang berjalan dengan server MQTT menggunakan package [Aedes])(https://github.com/moscajs/aedes) yang memberikan kecepatan pertukaran data yang lebih cepat daripada HTTP (Seharusnya sudah sadar dari dulu)
 
 ## Konten
 
@@ -187,6 +194,7 @@ Aplikasi server membutuhkan beberapa package:
 9. [_mysql_](https://www.npmjs.com/package/mysql)
 10. [_pm2_](https://www.npmjs.com/package/pm2)
 11. [_util_](https://www.npmjs.com/package/util)
+12. [_aedes_](https://www.npmjs.com/package/aedes)
 
 ## Setup Awal
 
@@ -201,6 +209,7 @@ Untuk mengetahui apa arti dari setiap baris di dalam file **.env**, pergi ke [Li
 4. Uji coba terlebih dahulu
 5. Jika Anda menggunakan MYSQL, Anda bisa mengimpor tabel dari sebuah file yang terletak di dalam folder **/server/mysql**
 6. Tambahkan semua identitas bersamaan dengan hexID mereka di dalam file **identity.json** di dalam direktori **/server/auth**
+7. Secara opsional, Anda juga bisa menjalankan server MQTT yang berjalan dengan package Aedes dengan mengkases folder **mq** dan mengetik **npm run start**
 
 Untuk menginstall semua package
 
@@ -252,19 +261,20 @@ Filre **.env** di dalam folder **server** berisikan beberapa variabel yang akan 
 Untuk kenyamanan dalam kegunaan, sunting saja file **.env**, Anda bisa menyunting file **mysqlQuery.js** dan **firebaseQuery.js** untuk menyesuaikan kebutuhan kueri anda
 
 1. **_SERVER_PORT_** = Mendefinisikan di port mana aplikasi berjalan, secara default aplikasi berjalan di port **5128**
-2. **_MYSQL_HOST_** = Mendefinisikan host / server di mana database MySQL berada
-3. **_MYSQL_USER_** = Mendifiniskan user yang akan terhubung ke database MySQL
-4. **_MYSQL_PASSWORD_** = Mendefinisikan password dari MYSQL_USER yang digunakan untuk terhubung ke host
-5. **_MYSQL_DATABASE_** = Mendefinisikan database apa yang akan digunakan
-6. **_MYSQL_ABSENT_TABLE_** = Mendefinisikan tabel apa yang akan digunakan untuk menginsert data
-7. **_FIREBASE_API_** = Mendefinisikan kunci API yang akan digunakan untuk terhubung ke Project Firebase Anda
-8. **_FIREBASE_AUTH_DOMAIN_** = Mendifinisikan domain yang terautentikasi untuk terkoneksi ke Project Firebase Anda
-9. **_FIREBASE_PROJECT_ID_** = Mendefinisikan ID Project dari Project Firebase Anda
-10. **_FIREBASE_STORAGE_BUCKET_** = Mendefinisikan Storage Bucket dari Project Firebase Anda
-11. **_FIREBASE_MESSAGE_ID_** = Mendefinisikan ID Message dari Project Firebase Anda
-12. **_FIREBASE_APP_ID_** = Mendefinisikan ID App dari Project Firebase Anda
-13. **_FIREBASE_MEASUREMENT_ID_** = Mendefinisikan ID Measurement dari Projek Firebase Anda
-14. **_FIREBASE_KEYS_** = Mendefinisikan Kunci Admin Privat dari Projek Firebase Anda
+2. **_ESP_ORIGIN_** = Mendefinisikan alamat sumber (alamat IP) dari ESP8266 atau ESP32 atau Client
+3. **_MYSQL_HOST_** = Mendefinisikan host / server di mana database MySQL berada
+4. **_MYSQL_USER_** = Mendifiniskan user yang akan terhubung ke database MySQL
+5. **_MYSQL_PASSWORD_** = Mendefinisikan password dari MYSQL_USER yang digunakan untuk terhubung ke host
+6. **_MYSQL_DATABASE_** = Mendefinisikan database apa yang akan digunakan
+7. **_MYSQL_ABSENT_TABLE_** = Mendefinisikan tabel apa yang akan digunakan untuk menginsert data
+8. **_FIREBASE_API_** = Mendefinisikan kunci API yang akan digunakan untuk terhubung ke Project Firebase Anda
+9. **_FIREBASE_AUTH_DOMAIN_** = Mendifinisikan domain yang terautentikasi untuk terkoneksi ke Project Firebase Anda
+10. **_FIREBASE_PROJECT_ID_** = Mendefinisikan ID Project dari Project Firebase Anda
+11. **_FIREBASE_STORAGE_BUCKET_** = Mendefinisikan Storage Bucket dari Project Firebase Anda
+12. **_FIREBASE_MESSAGE_ID_** = Mendefinisikan ID Message dari Project Firebase Anda
+13. **_FIREBASE_APP_ID_** = Mendefinisikan ID App dari Project Firebase Anda
+14. **_FIREBASE_MEASUREMENT_ID_** = Mendefinisikan ID Measurement dari Projek Firebase Anda
+15. **_FIREBASE_KEYS_** = Mendefinisikan Kunci Admin Privat dari Projek Firebase Anda
 
 Untuk mengetahui bagaimana mendapatkan kredensial dari Project Firebase, tolong rujuk ke [Dokumentasi Firebase](https://firebase.google.com/docs/build)
 
