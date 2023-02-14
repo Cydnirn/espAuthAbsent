@@ -10,7 +10,7 @@ Compatible with [MySql Server](https://dev.mysql.com/downloads/mysql/) and [Fire
 
 Can be run with other app, including **PHP** as long as they are in different ports
 
-With version 2.1.1, now runs with MQTT Server running on [Aedes])(https://github.com/moscajs/aedes) which provide faster data transfer than http (Should have realized sooner)
+With version 2.1.1, now runs with MQTT Server running on [Aedes](https://github.com/moscajs/aedes) which provide faster data transfer than http (Should have realized sooner)
 
 ## Contents
 
@@ -29,7 +29,6 @@ Requires NPM, to get NPM please install Node.js
 
 Requires the pm2 package enabled globally
 
-```bash
 ```bash
 npm i pm2 -g
 ```
@@ -50,6 +49,7 @@ The application server used several packages:
 10. [_pm2_](https://www.npmjs.com/package/pm2)
 11. [_util_](https://www.npmjs.com/package/util)
 12. [_aedes_](https://www.npmjs.com/package/aedes)
+13. [_mqtt_](https://www.npmjs.com/pacakge/mqtt)
 
 ## Initial Setup
 
@@ -58,13 +58,12 @@ Before starting the server, configure the **.env** file located inside the **ser
 For more information about what each lines means go to [Process Environment](#process-environment)
 
 1. Navigate to **server** folder
-
 2. Install all required package library with npm
 3. Configure the **.env** file
-4. Start the test first
-5. If you used MYSQL, you can import the test table for attendance located inside the **/server/mysql** folder
-6. Add all your identities with their corresponding HexID inside the **identity.json** inside the **/server/auth** folder
-7. Optionally you can run the Aedes MQTT server inside the **mq** folder and type **npm run start**
+4. If you used MYSQL, you can import the test table for attendance located inside the **/server/mysql** folder
+5. Add all your identities with their corresponding HexID inside the **identity.json** inside the **/server/auth** folder
+6. Go to **mq** folder, and install all package with npm
+7. Start the test 
 
 To install all package
 
@@ -75,8 +74,8 @@ npm i
 To start the test
 
 ```bash
-npm startmysql //If you are using mysql
-npm startfirebase //If you are using firebase
+npm devmysql //If you are using mysql
+npm devfirebase //If you are using firebase
 ```
 
 To run the app, use **pm2** library that you have installed globally
@@ -84,6 +83,7 @@ To run the app, use **pm2** library that you have installed globally
 ```bash
 pm2 start appDefault.js --name espAuth //If you are using mysql
 pm2 start appFirebase.js --name espAuth //If you are using Firebase Firestore
+pm2 start index.js --name mqttLocal //Inside the mq folder
 ```
 
 ### Identity Format
@@ -130,6 +130,10 @@ For ease of use, just edit the **.env** file, you may edit the **mysqlQuery.js**
 13. **_FIREBASE_APP_ID_** = Defines the your app ID that will be used to connect to Firebase
 14. **_FIREBASE_MEASUREMENT_ID_** = Defines the measurement ID of your firebase project
 15. **_FIREBASE_KEYS_** = Defines your admin secret keys to use in Firebase
+16. **_START_TIME_** = Defines the start time when data is allowed
+17. **_END_TIME_** = Defines the finish time when data is allowed
+
+**START_TIME SHOULD BE GREATER THAN END_TIME**
 
 To know how to get the Firebase credentials, please refer to their [Documentation](https://firebase.google.com/docs/build)
 
@@ -195,6 +199,7 @@ Aplikasi server membutuhkan beberapa package:
 10. [_pm2_](https://www.npmjs.com/package/pm2)
 11. [_util_](https://www.npmjs.com/package/util)
 12. [_aedes_](https://www.npmjs.com/package/aedes)
+13. [_mqtt_](https://www.npmjs.com/pacakge/mqtt)
 
 ## Setup Awal
 
@@ -203,13 +208,12 @@ Sebelum memulai aplikasi server, Atur file **.env** yang terletak di dalam folde
 Untuk mengetahui apa arti dari setiap baris di dalam file **.env**, pergi ke [Lingkungan Process](#lingkungan-process)
 
 1. Masuk ke dalam folder **server**
-
 2. Install semua package yang dibutuhkan menggunakan npm
 3. Atur file **.env**
-4. Uji coba terlebih dahulu
-5. Jika Anda menggunakan MYSQL, Anda bisa mengimpor tabel dari sebuah file yang terletak di dalam folder **/server/mysql**
-6. Tambahkan semua identitas bersamaan dengan hexID mereka di dalam file **identity.json** di dalam direktori **/server/auth**
-7. Secara opsional, Anda juga bisa menjalankan server MQTT yang berjalan dengan package Aedes dengan mengkases folder **mq** dan mengetik **npm run start**
+4. Jika Anda menggunakan MYSQL, Anda bisa mengimpor tabel dari sebuah file yang terletak di dalam folder **/server/mysql**
+5. Tambahkan semua identitas bersamaan dengan hexID mereka di dalam file **identity.json** di dalam direktori **/server/auth**
+6. Pergi ke folder **mq**, dan install semua package dengan npm
+7. Mulai tes
 
 Untuk menginstall semua package
 
@@ -220,15 +224,16 @@ npm i
 Untuk memulai test
 
 ```bash
-npm startmysql //Jika menggunakan mysql
-npm startfirebase //Jika menggunakan firebase
+npm devmysql //Jika menggunakan mysql
+npm devfirebase //Jika menggunakan firebase
 ```
 
 Untuk menjalan aplikasi, gunakan pm2
 
 ```bash
-pm2 start appDefault.js //Jika menggunakan mysql
-pm2 start appFirebase.js //Jika menggunakan firebase
+pm2 start appDefault.js --name espAuth //Jika menggunakan mysql
+pm2 start appFirebase.js --name espAuth //Jika menggunakan firebase
+pm2 start index.js --name mqttLocal //Di dalam folder mq
 ```
 
 ### Format Identitas
@@ -275,6 +280,10 @@ Untuk kenyamanan dalam kegunaan, sunting saja file **.env**, Anda bisa menyuntin
 13. **_FIREBASE_APP_ID_** = Mendefinisikan ID App dari Project Firebase Anda
 14. **_FIREBASE_MEASUREMENT_ID_** = Mendefinisikan ID Measurement dari Projek Firebase Anda
 15. **_FIREBASE_KEYS_** = Mendefinisikan Kunci Admin Privat dari Projek Firebase Anda
+16. **_START_TIME_** = Mendefinisikan kapan data mulai diperbolehkan masuk
+17. **_END_TIME_** = Mendefinisikan kapan waktu akhir data diperbolehkan masuk
+
+**START_TIME HARUS LEBIH BESAR DARIPADA END_TIME**
 
 Untuk mengetahui bagaimana mendapatkan kredensial dari Project Firebase, tolong rujuk ke [Dokumentasi Firebase](https://firebase.google.com/docs/build)
 
