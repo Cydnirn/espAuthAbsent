@@ -1,6 +1,6 @@
 {
   "name": "espauthabsent",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Standalone ESPxx Auth Server running on Node.js with Express, with database support, either MySQL or NoSQL with Firebase",
   "main": "app.js",
   "scripts": {
