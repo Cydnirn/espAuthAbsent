@@ -133,7 +133,7 @@ For ease of use, just edit the **.env** file, you may edit the **mysqlQuery.js**
 16. **_START_TIME_** = Defines the start time when data is allowed
 17. **_END_TIME_** = Defines the finish time when data is allowed
 
-**START_TIME SHOULD BE GREATER THAN END_TIME**
+**START_TIME SHOULD BE LESSER THAN END_TIME**
 
 To know how to get the Firebase credentials, please refer to their [Documentation](https://firebase.google.com/docs/build)
 
@@ -160,7 +160,7 @@ Menggunakan **Express.js** dengan Node.js
 
 Kompatibel dengan [MySql Server](https://dev.mysql.com/downloads/mysql/) dan [Firebase Firestore](https://firebase.google.com/docs/firestore/)
 
-Dengan versi 2.1.1, sekarang berjalan dengan server MQTT menggunakan package [Aedes])(https://github.com/moscajs/aedes) yang memberikan kecepatan pertukaran data yang lebih cepat daripada HTTP (Seharusnya sudah sadar dari dulu)
+Dengan versi 2.1.1, sekarang berjalan dengan server MQTT menggunakan package [Aedes](https://github.com/moscajs/aedes) yang memberikan kecepatan pertukaran data yang lebih cepat daripada HTTP (Seharusnya sudah sadar dari dulu)
 
 ## Konten
 
@@ -283,7 +283,7 @@ Untuk kenyamanan dalam kegunaan, sunting saja file **.env**, Anda bisa menyuntin
 16. **_START_TIME_** = Mendefinisikan kapan data mulai diperbolehkan masuk
 17. **_END_TIME_** = Mendefinisikan kapan waktu akhir data diperbolehkan masuk
 
-**START_TIME HARUS LEBIH BESAR DARIPADA END_TIME**
+**START_TIME HARUS LEBIH KECIL DARIPADA END_TIME**
 
 Untuk mengetahui bagaimana mendapatkan kredensial dari Project Firebase, tolong rujuk ke [Dokumentasi Firebase](https://firebase.google.com/docs/build)
 
