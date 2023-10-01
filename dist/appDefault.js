@@ -9,7 +9,7 @@ const cors = require("cors");
 require("dotenv").config();
 
 //Endpoint export
-const rootRoutes = require("./routes/rootDefault");
+const rootRoutes = require("../routes/rootDefault");
 
 const app = express();
 

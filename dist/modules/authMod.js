@@ -1,4 +1,4 @@
-const { getSQLDate, getDateOnly, eligibleTime } = require("../modules/sqlDate");
+const { getSQLDate, getDateOnly, eligibleTime } = require("./sqlDate");
 const SQLQuery = require("../model/mysqlQuery");
 const fs = require('fs');
 const path = require('path');

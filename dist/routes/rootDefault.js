@@ -1,7 +1,7 @@
 "use strict";
 const express = require("express");
 const router = express.Router();
-const { ReadIdentityMySql } = require("../modules/authMod");
+const { ReadIdentityMySql } = require("../dist/modules/authMod");
 const mqtt = require('mqtt');
 
 const client = mqtt.connect("mqtt://localhost:1883");
