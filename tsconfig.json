@@ -10,11 +10,9 @@
             "#routes/*":["src/routes/*"],
             "#controllers/*":["src/controllers/*"],
             "#utils/*": ["src/utils/*"],
-            "#class/*": ["src/class/*"],
             "#events/*" : ["src/events/*"],
             "#config/*": ["src/config/*"],
             "#loaders/*": ["src/loaders/*"],
-            "#cert/*":["certificate/*"]
         },
         "rootDir": "src",
         "outDir": "dist",
