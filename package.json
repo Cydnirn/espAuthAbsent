@@ -12,6 +12,15 @@
         "startmqtt": "node mq.js",
         "startfirebase": "node appFirebase.js"
     },
+    "imports": {
+        "#models/*": "./src/models/*.ts",
+        "#routes/*": "./src/routes/*.ts",
+        "#controllers/*": "./src/controllers/*.ts",
+        "#utils/*": "./src/utils/*.ts",
+        "#events/*": "./src/events/*.ts",
+        "#config/*": "./src/config/*.ts",
+        "#loaders/*": "./src/loaders/*.ts"
+    },
     "author": "Cydnirn, Harryawan, BossBaby11",
     "license": "ISC",
     "dependencies": {
@@ -33,6 +42,7 @@
         "util": "^0.12.5"
     },
     "devDependencies": {
+        "@types/cors": "^2.8.14",
         "chai": "^4.3.10",
         "mocha": "^10.2.0",
         "nodemon": "^3.0.1",
