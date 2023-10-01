@@ -1,0 +1,31 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "CommonJS",
+        "moduleResolution": "Node",
+        "checkJs": false,
+        "baseUrl": "./",
+        "paths": {
+            "#models/*": ["src/models/*"],
+            "#routes/*":["src/routes/*"],
+            "#controllers/*":["src/controllers/*"],
+            "#utils/*": ["src/utils/*"],
+            "#class/*": ["src/class/*"],
+            "#events/*" : ["src/events/*"],
+            "#config/*": ["src/config/*"],
+            "#loaders/*": ["src/loaders/*"],
+            "#cert/*":["certificate/*"]
+        },
+        "rootDir": "src",
+        "outDir": "dist",
+        "noImplicitAny": true,
+        "resolveJsonModule": true,
+        "strict": true,
+        "esModuleInterop": true
+    },
+    "exclude": ["node_modules"],
+    "include": ["./"],
+    "ts-node": {
+        "files": true
+    }
+}
